@@ -1,0 +1,28 @@
+# iearul.xyz — Career Island (single-page app)
+#
+# This docroot also contains other apps in sub-folders (admin, lgc, megashop,
+# iloveyou) that are served by their own subdomains. Every rewrite below is
+# limited to the iearul.xyz host so those subdomains are not affected.
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # The admin app's source tree (logs, SQL dumps, composer files) must not be
+  # reachable through the main domain. admin.iearul.xyz keeps working.
+  RewriteCond %{HTTP_HOST} ^(www\.)?iearul\.xyz$ [NC]
+  RewriteRule ^(admin|megashop/dbbackup)(/|$) - [F,L]
+
+  # Client-side routes (/cv, /journal/...) fall back to index.html.
+  RewriteCond %{HTTP_HOST} ^(www\.)?iearul\.xyz$ [NC]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
