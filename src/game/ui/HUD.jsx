@@ -60,6 +60,7 @@ export function HUD() {
       <nav className="hud-legal" aria-label="Site">
         <a href="/apps/">Apps</a>
         <a href="/impressum/">Impressum</a>
+        <a href="/privacy/#en">Privacy</a>
       </nav>
 
       {!s.seen.walk && !s.panel && (

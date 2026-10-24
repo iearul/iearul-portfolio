@@ -25,7 +25,8 @@ export function Page({ title, children, className = '' }) {
       <main className="page-main">{children}</main>
       <footer className="page-foot">
         © {new Date().getFullYear()} Md Iearulislam · Built with React, Three.js and a Laravel API ·{' '}
-        <a href="/support/">Support</a> · <a href="/contact/">Contact</a> · <a href="/impressum/">Impressum</a>
+        <a href="/support/">Support</a> · <a href="/contact/">Contact</a> · <a href="/impressum/">Impressum</a> ·{' '}
+        <a href="/privacy/#en">Privacy</a>
       </footer>
     </div>
   )

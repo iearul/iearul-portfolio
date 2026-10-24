@@ -9,8 +9,8 @@
   --pink: #ff5d8f;
   --accent: var(--teal);
   --radius: 16px;
-  --font-display: 'Fredoka', ui-rounded, system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Fredoka Variable', ui-rounded, system-ui, sans-serif;
+  --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* plain pages */
   --paper: #fbf7f0;
@@ -1373,12 +1373,19 @@ kbd {
   .hint {
     display: none;
   }
+  /* Sits left of .hud-actions (about 194px wide); wraps to two or three rows on narrow phones,
+     so .prompt sits high enough to clear it. */
   .hud-legal {
     right: auto;
     left: 14px;
+    flex-wrap: wrap;
+    gap: 2px 10px;
+    padding: 7px 10px;
+    max-width: max(96px, calc(100vw - 236px));
+    border-radius: 16px;
   }
   .prompt {
-    bottom: 72px;
+    bottom: 88px;
     max-width: calc(100vw - 28px);
   }
   .toasts {
