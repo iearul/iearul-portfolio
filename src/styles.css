@@ -912,6 +912,71 @@ kbd {
   font-size: 4rem;
 }
 
+.app-list {
+  display: grid;
+  gap: 12px;
+}
+.app-card {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+}
+.app-card-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.app-icon {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+}
+.app-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+.app-status {
+  font-size: 0.8rem;
+  color: var(--ink-dim);
+}
+.app-card p {
+  margin: 10px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--ink-dim);
+}
+.app-card .links {
+  margin-top: 14px;
+}
+.release-track {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin: 12px 0 0;
+  padding: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.release-track li {
+  padding-top: 6px;
+  border-top: 4px solid rgba(255, 255, 255, 0.12);
+}
+.release-track .is-done {
+  border-color: var(--accent);
+}
+.release-track .is-now {
+  border-color: var(--accent);
+  border-top-style: dashed;
+  color: var(--ink);
+}
+
 .post-list {
   list-style: none;
   padding: 0;

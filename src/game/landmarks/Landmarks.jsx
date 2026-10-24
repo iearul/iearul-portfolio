@@ -1,6 +1,6 @@
 import { LANDMARKS } from '../../data/landmarks'
 import { Landmark } from './Landmark'
-import { Arcade, Campus, Dock, Factory, Library, Mailbox, SkillTree, Startup, Tower, University } from './Buildings'
+import { AppStudio, Arcade, Campus, Dock, Factory, Library, Mailbox, SkillTree, Startup, Tower, University } from './Buildings'
 
 const MODELS = {
   dock: [Dock, 3.2],
@@ -9,6 +9,7 @@ const MODELS = {
   university: [University, 5.8],
   factory: [Factory, 7.8],
   tower: [Tower, 13],
+  studio: [AppStudio, 5.6],
   arcade: [Arcade, 5],
   library: [Library, 6],
   tree: [SkillTree, 7],

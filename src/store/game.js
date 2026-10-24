@@ -14,6 +14,7 @@ export const ACHIEVEMENTS = {
   collector: { title: 'Full stack', text: 'Collected every skill orb.' },
   'arcade-regular': { title: 'Arcade regular', text: 'Looked at 3 projects.' },
   bookworm: { title: 'Bookworm', text: 'Opened the journal.' },
+  'early-adopter': { title: 'Early adopter', text: 'Checked out the apps in the App Studio.' },
   hello: { title: 'Say hello', text: 'Sent a message from the mailbox.' },
   completionist: { title: 'Completionist', text: 'Explored 100% of the island.' },
 }
@@ -52,6 +53,7 @@ export function completion(state) {
     ...CAREER_LANDMARKS.map((l) => !!state.seen[`career:${l.id}`]),
     ...SKILLS.map((s) => !!state.collected[s.id]),
     !!state.seen['panel:projects'],
+    !!state.seen['panel:apps'],
     !!state.seen['panel:journal'],
     !!state.seen['panel:skills'],
     !!state.seen['panel:contact'],
@@ -123,6 +125,7 @@ export const useGame = create((set, get) => ({
     if (skills >= SKILLS.length) s.unlock('collector')
     if (projects >= 3) s.unlock('arcade-regular')
     if (s.seen['panel:journal']) s.unlock('bookworm')
+    if (s.seen['panel:apps']) s.unlock('early-adopter')
     if (s.seen['message:sent']) s.unlock('hello')
     if (completion(get()) >= 1) get().unlock('completionist')
   },
@@ -150,6 +153,7 @@ export const useGame = create((set, get) => ({
     if (panel.type === 'career' && lm) g.award(`career:${lm.id}`, 100, `${lm.tag}: ${lm.name}`)
     if (panel.type === 'projects') g.award('panel:projects', 60, 'Opened the Project Arcade')
     if (panel.type === 'project') g.award(`project:${panel.slug}`, 15, null)
+    if (panel.type === 'apps') g.award('panel:apps', 60, 'Opened the App Studio')
     if (panel.type === 'journal') g.award('panel:journal', 60, 'Opened the Journal Library')
     if (panel.type === 'skills') g.award('panel:skills', 40, 'Inspected the Skill Tree')
     if (panel.type === 'contact') g.award('panel:contact', 30, 'Found the Mailbox')

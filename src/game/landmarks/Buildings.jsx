@@ -378,6 +378,121 @@ const BOOKS = [
   [2.8, 0.75, 2.1, '#264653', -0.05],
 ]
 
+// Qiblo: compass needle swinging towards the Qibla, prayer rows below.
+function drawQiblo(ctx, t, w, h) {
+  ctx.fillStyle = '#1b7f62'
+  ctx.fillRect(0, 0, w, h)
+  ctx.fillStyle = 'rgba(255,255,255,0.18)'
+  ctx.fillRect(0, 0, w, 10)
+  const cx = w / 2
+  const cy = h * 0.36
+  const r = w * 0.32
+  ctx.strokeStyle = 'rgba(255,255,255,0.45)'
+  ctx.lineWidth = 4
+  ctx.beginPath()
+  ctx.arc(cx, cy, r, 0, Math.PI * 2)
+  ctx.stroke()
+  const a = 0.75 + Math.sin(t * 0.9) * 0.35 + Math.sin(t * 2.3) * 0.08
+  const ux = Math.sin(a)
+  const uy = -Math.cos(a)
+  const needle = (len, color) => {
+    ctx.fillStyle = color
+    ctx.beginPath()
+    ctx.moveTo(cx + ux * len, cy + uy * len)
+    ctx.lineTo(cx - uy * 5, cy + ux * 5)
+    ctx.lineTo(cx + uy * 5, cy - ux * 5)
+    ctx.fill()
+  }
+  needle(r * 0.8, '#ffffff')
+  needle(-r * 0.8, '#eec46a')
+  for (let i = 0; i < 3; i++) {
+    ctx.fillStyle = i === 1 ? 'rgba(255,255,255,0.32)' : 'rgba(255,255,255,0.12)'
+    ctx.fillRect(8, h * 0.64 + i * 15, w - 16, 11)
+  }
+  ctx.fillStyle = '#eec46a'
+  ctx.fillRect(8, h * 0.64 + 24, (w - 16) * ((t * 0.08) % 1), 2)
+}
+
+// RotaMint: shift calendar with a moving "today" and this month's pay growing.
+const SHIFTS = ['#ffd166', '#3ddc97', '#7b5cff', null]
+function drawRota(ctx, t, w, h) {
+  ctx.fillStyle = '#111a2b'
+  ctx.fillRect(0, 0, w, h)
+  ctx.fillStyle = '#3ddc97'
+  ctx.fillRect(0, 10, w, 14)
+  const cell = Math.floor((w - 12) / 7)
+  const today = Math.floor(t * 1.5) % 35
+  for (let i = 0; i < 35; i++) {
+    const x = 6 + (i % 7) * cell
+    const y = 32 + Math.floor(i / 7) * cell
+    ctx.fillStyle = SHIFTS[(i * 7 + (i >> 2)) % 4] || 'rgba(255,255,255,0.1)'
+    ctx.fillRect(x, y, cell - 2, cell - 2)
+    if (i === today) {
+      ctx.strokeStyle = '#ffffff'
+      ctx.lineWidth = 1
+      ctx.strokeRect(x - 0.5, y - 0.5, cell - 1, cell - 1)
+    }
+  }
+  const months = [0.5, 0.7, 0.6, 0.85, 0.75]
+  months.forEach((v, i) => {
+    const last = i === months.length - 1
+    const bh = v * 40 * (last ? 0.6 + 0.4 * ((t * 0.25) % 1) : 1)
+    ctx.fillStyle = last ? '#3ddc97' : 'rgba(61,220,151,0.4)'
+    ctx.fillRect(8 + i * 12, h - 14 - bh, 8, bh)
+  })
+}
+
+function Phone({ screen, body, notch, ...props }) {
+  return (
+    <group {...props}>
+      <Box size={[1.7, 0.25, 0.8]} color="#5b5f6b" position={[0, -0.12, -0.1]} />
+      <Box size={[1.5, 2.9, 0.2]} color={body} position={[0, 1.45, 0]} />
+      <mesh position={[0, 1.45, 0.101]}>
+        <planeGeometry args={[1.32, 2.64]} />
+        <meshBasicMaterial map={screen} toneMapped={false} />
+      </mesh>
+      {notch ? (
+        <Box size={[0.36, 0.08, 0.02]} color="#0b0b0f" position={[0, 2.66, 0.11]} cast={false} />
+      ) : (
+        <mesh position={[0, 2.66, 0.105]}>
+          <circleGeometry args={[0.045, 10]} />
+          <meshBasicMaterial color="#0b0b0f" />
+        </mesh>
+      )}
+    </group>
+  )
+}
+
+export function AppStudio() {
+  const qiblo = useCanvasTexture(72, 144, drawQiblo, 0.08)
+  const rota = useCanvasTexture(72, 144, drawRota, 0.2)
+  const download = useRef()
+  const spinner = useRef()
+  useFrame(({ clock }, dt) => {
+    if (download.current) download.current.position.y = 4.3 + Math.sin(clock.elapsedTime * 2.4) * 0.15
+    if (spinner.current) spinner.current.rotation.z -= dt * 1.6
+  })
+  return (
+    <group>
+      <Plinth r={2.5} color="#ffe2cc" />
+      {/* The studio faces the centre (west); the screens turn south-west so
+          the camera, which always looks from +z, sees them too. */}
+      <group rotation={[0, 1.1, 0]}>
+        <Phone screen={qiblo} body="#1d2a33" position={[-0.85, 0.37, 0.1]} rotation={[-0.1, 0.22, 0]} />
+        <Phone screen={rota} body="#d9dde3" notch position={[0.85, 0.37, 0.1]} rotation={[-0.1, -0.22, 0]} />
+        <group ref={download} position={[0, 4.3, 0.2]}>
+          <Box size={[0.22, 0.45, 0.22]} color="#ff8c42" emissive="#ff8c42" emissiveIntensity={0.4} position={[0, 0.22, 0]} />
+          <Cone r={0.36} h={0.4} seg={4} color="#ff8c42" position={[0, -0.2, 0]} rotation={[Math.PI, Math.PI / 4, 0]} />
+          <mesh ref={spinner}>
+            <torusGeometry args={[0.62, 0.05, 6, 32, Math.PI * 1.4]} />
+            <meshBasicMaterial color="#ffd166" toneMapped={false} />
+          </mesh>
+        </group>
+      </group>
+    </group>
+  )
+}
+
 export function Library() {
   const book = useRef()
   useFrame(({ clock }) => {

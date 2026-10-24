@@ -6,7 +6,7 @@ import { panelFor } from '../Player'
 import { Minimap } from './Minimap'
 import { Icon } from './Icon'
 
-const VERB = { career: 'Enter', welcome: 'Read', projects: 'Play', journal: 'Browse', skills: 'Inspect', contact: 'Open' }
+const VERB = { career: 'Enter', welcome: 'Read', projects: 'Play', apps: 'Explore', journal: 'Browse', skills: 'Inspect', contact: 'Open' }
 
 export function HUD() {
   const s = useGame()

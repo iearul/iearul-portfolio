@@ -33,10 +33,39 @@ export const SKILLS = [
   { id: 'react', name: 'React', group: 'Frontend', tier: 'core' },
   { id: 'angular', name: 'Angular', group: 'Frontend', tier: 'core' },
   { id: 'tailwind', name: 'Tailwind CSS', group: 'Frontend', tier: 'core' },
+  { id: 'kotlin', name: 'Kotlin', group: 'Mobile', tier: 'core' },
+  { id: 'compose', name: 'Jetpack Compose', group: 'Mobile', tier: 'core' },
+  { id: 'swift', name: 'Swift', group: 'Mobile', tier: 'core' },
+  { id: 'swiftui', name: 'SwiftUI', group: 'Mobile', tier: 'core' },
   { id: 'java', name: 'Java', group: 'Also speaks', tier: 'familiar' },
   { id: 'python', name: 'Python', group: 'Also speaks', tier: 'familiar' },
   { id: 'cicd', name: 'CI/CD', group: 'Ways of working', tier: 'core' },
   { id: 'agile', name: 'Agile / Scrum', group: 'Ways of working', tier: 'core' },
+]
+
+// Apps in the App Studio, mirroring the static pages under public/apps/.
+// `stage` indexes RELEASE_STAGES: move it on as an app gets closer to the
+// stores, together with `status` and the app's page.
+export const RELEASE_STAGES = ['Build', 'Test', 'Beta', 'In stores']
+
+export const APPS = [
+  {
+    slug: 'qiblo', name: 'Qiblo', stage: 0,
+    status: 'Beta end of November 2026 · launch before Ramadan 2027',
+    summary:
+      'Everyday Islamic companion: halal food scanner, prayer times with start and end, Qibla compass, nearby mosques and a Ramadan mode. Free, no account, no tracking.',
+    tech: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI', 'Laravel API'],
+    icon: '/apps/qiblo/img/icon.png', page: '/apps/qiblo/',
+    cta: { label: 'Join the beta', url: 'https://qiblo.iearul.xyz/#beta' },
+  },
+  {
+    slug: 'rota-mint', name: 'RotaMint', stage: 1,
+    status: 'Coming soon',
+    summary:
+      'Shift calendar for people who work changing shifts: log early, late and night shifts and see paid hours and estimated gross pay for the month. Offline, no account, no ads.',
+    tech: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI', 'Play Billing', 'StoreKit'],
+    icon: '/apps/rota-mint/img/icon.png', page: '/apps/rota-mint/',
+  },
 ]
 
 export const FALLBACK_CAREER = [

@@ -1,8 +1,8 @@
 # Career Island — iearul.xyz
 
 Portfolio of Md Iearulislam as a small 3D game. Visitors walk a low-poly island where every building is a
-level of the career (Dhaka campus → Zettabyte → Wuppertal → Bauer → Weezly), collect skill orbs, play the
-project arcade, read the journal and send a message from the mailbox. `/cv` is a plain, printable CV for
+level of the career (Dhaka campus → Zettabyte → Wuppertal → Bauer → Weezly), collect skill orbs, visit the
+app studio (Qiblo, RotaMint), play the project arcade, read the journal and send a message from the mailbox. `/cv` is a plain, printable CV for
 people in a hurry, and the site falls back to it when WebGL is not available.
 
 ## Stack
@@ -35,6 +35,8 @@ npm run dev
 ## Layout
 
 - `src/data/landmarks.js` — island layout: zones, positions, road order, orb spots
+- `src/data/profile.js` — static profile data: skills, the apps in the App Studio (`APPS`, `RELEASE_STAGES`;
+  update `stage` and `status` there as an app moves towards the stores) and the API fallbacks
 - `src/game/world/` — terrain (one height function drives mesh, props and walking), water, sky, trees
 - `src/game/landmarks/` — the buildings
 - `src/game/Player.jsx` — movement (click/tap to walk, WASD), collisions, landmark proximity

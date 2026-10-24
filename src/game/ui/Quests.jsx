@@ -48,6 +48,7 @@ export function Quests() {
       <ul>
         <Row done={skills === SKILLS.length} title={`Collect skill orbs (${skills}/${SKILLS.length})`} sub="Glowing orbs are scattered along the road" />
         <Row done={s.seen['panel:projects']} title="Play at the Project Arcade" onGo={() => go('arcade')} />
+        <Row done={s.seen['panel:apps']} title="Check out the App Studio" onGo={() => go('studio')} />
         <Row done={s.seen['panel:journal']} title="Visit the Journal Library" onGo={() => go('library')} />
         <Row done={s.seen['panel:skills']} title="Inspect the Skill Tree" onGo={() => go('tree')} />
         <Row done={s.seen['message:sent']} title="Send a letter from the Mailbox" onGo={() => go('mailbox')} />

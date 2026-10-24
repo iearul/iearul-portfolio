@@ -16,7 +16,7 @@ export function Intro({ ready }) {
         </p>
         <p>
           Seven years of work, five levels, one island. Walk from my first classroom in Dhaka to my current job in
-          Germany, collect skills on the way and play the project arcade.
+          Germany, collect skills on the way, play the project arcade and see the apps I ship.
         </p>
         <div className="links">
           <button type="button" className="primary-btn big" onClick={start} disabled={!ready} autoFocus>

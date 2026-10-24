@@ -14,7 +14,8 @@ export function WelcomePanel() {
       <p>{PROFILE.summary}</p>
       <p>
         This island is my career as a game. Walk the road clockwise from the harbour: every building is a level, from my
-        school years in Dhaka to my current job in Germany. Collect the glowing skill orbs on the way.
+        school years in Dhaka to my current job in Germany, plus the App Studio where I ship apps for Android and
+        iPhone. Collect the glowing skill orbs on the way.
       </p>
       <ul className="controls">
         <li>

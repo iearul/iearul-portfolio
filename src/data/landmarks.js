@@ -28,6 +28,10 @@ export const LANDMARKS = [
     years: '2024 – now', pos: [21, -3], radius: 5, footprint: 2.4, color: '#2ec4b6',
   },
   {
+    id: 'studio', type: 'apps', name: 'App Studio', tag: 'Apps',
+    pos: [21.5, 7], radius: 4.2, footprint: 2, color: '#ff8c42',
+  },
+  {
     id: 'arcade', type: 'projects', name: 'Project Arcade', tag: 'Projects',
     pos: [13, 10], radius: 4.4, footprint: 1.8, color: '#ff5d8f',
   },
@@ -52,7 +56,7 @@ export const CAREER_LANDMARKS = LANDMARKS.filter((l) => l.type === 'career')
 export const SPAWN = [0, 21]
 
 // The walkable "road" visits every landmark once, in story order.
-export const ROAD = ['dock', 'campus', 'startup', 'university', 'tree', 'factory', 'tower', 'arcade', 'mailbox', 'dock']
+export const ROAD = ['dock', 'campus', 'startup', 'university', 'tree', 'factory', 'tower', 'studio', 'arcade', 'mailbox', 'dock']
 
 // The point in front of a landmark where the player stops (towards the centre).
 export function doorOf(l) {
@@ -64,9 +68,11 @@ export function doorOf(l) {
   return [x + (dx / d) * off, z + (dz / d) * off]
 }
 
-// Skill orbs, scattered roughly along the road.
+// Skill orbs, scattered roughly along the road. Spot i holds SKILLS[i]; the
+// four mobile skills (13–16) sit around the App Studio.
 export const ORB_SPOTS = [
   [-6, 20], [-11, 18], [-20, 9], [-24, 2], [-18, -10], [-14, -15],
   [-3, -14], [4, -13], [16, -14], [19, -10], [24, 3], [18, 6],
-  [7, 15], [-1, 12], [-11, 1], [9, -1], [0, 2],
+  [7, 15], [17.5, 2], [14.8, 7.4], [20.5, 11.8], [25, 8.5],
+  [-1, 12], [-11, 1], [9, -1], [0, 2],
 ]

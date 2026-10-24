@@ -4,6 +4,7 @@ import { LANDMARK_BY_ID } from '../../../data/landmarks'
 import { Icon } from '../Icon'
 import { CareerPanel } from './CareerPanel'
 import { ProjectsPanel, ProjectDetail } from './ProjectsPanel'
+import { AppsPanel } from './AppsPanel'
 import { JournalPanel } from './JournalPanel'
 import { SkillsPanel } from './SkillsPanel'
 import { ContactPanel } from './ContactPanel'
@@ -13,6 +14,7 @@ const BODIES = {
   career: CareerPanel,
   projects: ProjectsPanel,
   project: ProjectDetail,
+  apps: AppsPanel,
   journal: JournalPanel,
   skills: SkillsPanel,
   contact: ContactPanel,

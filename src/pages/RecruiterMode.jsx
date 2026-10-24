@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'wouter'
 import { Page } from './Page'
 import { useContent } from '../store/content'
-import { PROFILE, SKILLS } from '../data/profile'
+import { APPS, PROFILE, SKILLS } from '../data/profile'
 import { renderMarkdown } from '../lib/markdown'
 import { Icon } from '../game/ui/Icon'
 import { ContactLinks } from '../game/ui/panels/ContactPanel'
@@ -88,6 +88,25 @@ export default function RecruiterMode({ notice }) {
             <h3>Languages</h3>
             <Chips items={PROFILE.languages.map((l) => `${l.name} ${l.level}`)} />
           </div>
+        </div>
+      </section>
+
+      <section className="cv-section">
+        <h2>Apps</h2>
+        <div className="cv-projects">
+          {APPS.map((a) => (
+            <article key={a.slug} className="cv-project">
+              <h3>{a.name}</h3>
+              <div className="org">Android · iOS · {a.status}</div>
+              <p>{a.summary}</p>
+              <Chips items={a.tech} />
+              <div className="links">
+                <a className="primary-btn" href={a.page}>
+                  App page
+                </a>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
