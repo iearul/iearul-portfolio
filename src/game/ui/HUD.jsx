@@ -56,6 +56,12 @@ export function HUD() {
 
       <Minimap />
 
+      {/* Plain <a>: these are static pages outside the SPA. */}
+      <nav className="hud-legal" aria-label="Site">
+        <a href="/apps/">Apps</a>
+        <a href="/impressum/">Impressum</a>
+      </nav>
+
       {!s.seen.walk && !s.panel && (
         <div className="hint card">
           <strong>Click or tap</strong> the ground to walk · <strong>WASD</strong> / arrows · <strong>E</strong> to enter · scroll to zoom

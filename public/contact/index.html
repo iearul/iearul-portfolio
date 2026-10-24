@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact · Md Iearulislam</title>
+  <meta name="description" content="Contact Md Iearulislam: questions about Qiblo or RotaMint, project ideas or job offers.">
+  <link rel="canonical" href="https://iearul.xyz/contact/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-bar">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">Md Iearulislam</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="/apps/">Apps</a>
+      <a href="/support/">Support</a>
+      <a href="/contact/" aria-current="page">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <p class="kicker">Contact</p>
+  <h1>Get in touch</h1>
+  <p class="lead">A question about one of my apps, a project idea or a job offer – I read every message and reply by
+    e-mail.</p>
+
+  <div class="grid-2" style="margin-top:28px; align-items:start">
+    <div class="card" id="form-card">
+      <form class="form" id="contact-form" action="https://admin.iearul.xyz/api/portfolio/messages" method="post" novalidate>
+        <label>
+          Topic
+          <select name="topic" id="topic">
+            <option value="General">General</option>
+            <option value="Qiblo">Qiblo</option>
+            <option value="RotaMint">RotaMint</option>
+            <option value="Work">Job or project</option>
+          </select>
+        </label>
+        <label>
+          Name
+          <input name="name" required maxlength="120" autocomplete="name">
+          <span class="field-error" data-for="name" hidden></span>
+        </label>
+        <label>
+          E-mail
+          <input name="email" type="email" required maxlength="190" autocomplete="email">
+          <span class="field-error" data-for="email" hidden></span>
+        </label>
+        <label>
+          Message
+          <textarea name="message" required minlength="10" maxlength="4900" rows="6"></textarea>
+          <span class="field-error" data-for="message" hidden></span>
+        </label>
+        <label class="hp" aria-hidden="true">
+          Website
+          <input name="website" tabindex="-1" autocomplete="off">
+        </label>
+        <p class="form-status" role="status" aria-live="polite"></p>
+        <div>
+          <button class="btn btn-primary" type="submit">Send message</button>
+        </div>
+        <p class="muted small" style="margin:0">Privacy: Md Iearulislam (<a href="/impressum/">Impressum</a>) stores your
+          name, e-mail address and message, plus your IP address and browser for spam protection, on a server at
+          Hostinger International Ltd. (Cyprus), only to answer you (Art. 6(1)(b) and (f) GDPR), and deletes them once
+          your request is settled. You have the right of access, rectification, erasure, restriction and objection, and
+          can complain to a data protection supervisory authority.</p>
+      </form>
+      <div class="sent" id="sent" hidden>
+        <div class="tick" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h2 style="margin:0 0 6px" tabindex="-1">Thanks, your message is on its way.</h2>
+        <p class="muted" style="margin:0">I'll answer you by e-mail.</p>
+      </div>
+      <noscript><p class="note" style="margin:16px 0 0">The form needs JavaScript. Please e-mail
+        <a href="mailto:hello@iearul.xyz">hello@iearul.xyz</a> instead.</p></noscript>
+    </div>
+
+    <aside class="card">
+      <ul class="contact-list">
+        <li><span>E-mail</span><a href="mailto:hello@iearul.xyz">hello@iearul.xyz</a></li>
+        <li><span>App help</span><a href="/support/">Support page</a> with answers for Qiblo and RotaMint</li>
+        <li><span>Elsewhere</span><a href="https://www.linkedin.com/in/md-iearulislam/">LinkedIn</a> ·
+          <a href="https://github.com/iearul">GitHub</a></li>
+        <li><span>Publisher</span><a href="/impressum/">Impressum</a></li>
+      </ul>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span class="copy">© 2026 Md Iearulislam</span>
+    <a href="/apps/">Apps</a>
+    <a href="/support/">Support</a>
+    <a href="/contact/">Contact</a>
+    <a href="/impressum/">Impressum</a>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('contact-form')
+    var field = function (name) { return form.elements.namedItem(name) }
+    var status = form.querySelector('.form-status')
+    var button = form.querySelector('button[type=submit]')
+    var topics = { qiblo: 'Qiblo', rotamint: 'RotaMint', work: 'Work' }
+    var app = new URLSearchParams(location.search).get('app')
+    if (app && topics[app]) field('topic').value = topics[app]
+
+    function showErrors(errors) {
+      form.querySelectorAll('.field-error').forEach(function (el) {
+        var msg = errors[el.dataset.for] && errors[el.dataset.for][0]
+        el.textContent = msg || ''
+        el.hidden = !msg
+        field(el.dataset.for).setAttribute('aria-invalid', msg ? 'true' : 'false')
+      })
+    }
+
+    function localErrors() {
+      var errors = {}
+      if (!field('name').value.trim()) errors.name = ['Please enter your name.']
+      if (!field('email').validity.valid || !field('email').value.trim()) errors.email = ['Please enter a valid e-mail address.']
+      if (field('message').value.trim().length < 10) errors.message = ['Please write at least 10 characters.']
+      return errors
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault()
+      var errors = localErrors()
+      showErrors(errors)
+      if (Object.keys(errors).length) {
+        status.textContent = 'Please check the highlighted fields.'
+        status.className = 'form-status error'
+        field(Object.keys(errors)[0]).focus()
+        return
+      }
+      var topic = field('topic').value
+      var body = {
+        name: field('name').value.trim(),
+        email: field('email').value.trim(),
+        message: (topic === 'General' ? '' : '[' + topic + '] ') + field('message').value.trim(),
+        website: field('website').value,
+      }
+      button.disabled = true
+      button.textContent = 'Sending…'
+      status.textContent = ''
+      status.className = 'form-status'
+      var ctrl = new AbortController()
+      var timer = setTimeout(function () { ctrl.abort() }, 12000)
+      fetch(form.dataset.endpoint || form.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+        signal: ctrl.signal,
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return {} }).then(function (json) {
+            if (res.ok) {
+              form.hidden = true
+              var sent = document.getElementById('sent')
+              sent.hidden = false
+              sent.querySelector('h2').focus()
+              return
+            }
+            showErrors(json.errors || {})
+            status.className = 'form-status error'
+            status.textContent = res.status === 422
+              ? 'Please check the highlighted fields.'
+              : res.status === 429
+                ? 'Too many messages at once. Please try again in a minute.'
+                : 'Sending failed. Please e-mail hello@iearul.xyz instead.'
+          })
+        })
+        .catch(function () {
+          status.className = 'form-status error'
+          status.textContent = 'Sending failed. Please e-mail hello@iearul.xyz instead.'
+        })
+        .finally(function () {
+          clearTimeout(timer)
+          button.disabled = false
+          button.textContent = 'Send message'
+        })
+    })
+  })()
+</script>
+</body>
+</html>

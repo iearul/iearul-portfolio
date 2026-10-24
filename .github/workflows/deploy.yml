@@ -67,3 +67,5 @@ jobs:
         run: |
           curl -fsS https://iearul.xyz/ | grep -q 'Career Island'
           curl -fsS -o /dev/null https://iearul.xyz/cv
+          curl -fsS https://iearul.xyz/apps/ | grep -q 'Apps for Android and iPhone'
+          curl -fsS https://iearul.xyz/impressum/ | grep -q 'Angaben gemäß § 5 DDG'

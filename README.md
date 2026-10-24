@@ -40,6 +40,11 @@ npm run dev
 - `src/game/Player.jsx` — movement (click/tap to walk, WASD), collisions, landmark proximity
 - `src/game/ui/` — HUD, quest log, minimap, panels
 - `src/pages/` — `/cv` and `/journal`
+- `public/apps/`, `public/support/`, `public/contact/`, `public/impressum/` — static HTML pages for the mobile
+  apps (Qiblo, RotaMint) and the legal notice, styled by `public/site.css`. No build step, no cookies, no
+  third-party requests; Apache serves them directly because the folders exist. `/contact` posts to
+  `POST /api/portfolio/messages` like the mailbox. RotaMint has English pages at `/apps/rota-mint/` and German
+  ones under `/apps/rota-mint/de/`; the old `/apps/rotamint/…` paths redirect there.
 
 ## Deploy
 

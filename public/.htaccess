@@ -14,6 +14,11 @@ Options -Indexes
   RewriteCond %{HTTP_HOST} ^(www\.)?iearul\.xyz$ [NC]
   RewriteRule ^(admin|megashop/dbbackup)(/|$) - [F,L]
 
+  # RotaMint's pages moved from /apps/rotamint (English under /en) to /apps/rota-mint.
+  # The app builds still link to the old paths.
+  RewriteCond %{HTTP_HOST} ^(www\.)?iearul\.xyz$ [NC]
+  RewriteRule ^apps/rotamint(?:/en)?(/.*)?$ /apps/rota-mint$1 [R=301,L]
+
   # Client-side routes (/cv, /journal/...) fall back to index.html.
   RewriteCond %{HTTP_HOST} ^(www\.)?iearul\.xyz$ [NC]
   RewriteCond %{REQUEST_FILENAME} !-f
