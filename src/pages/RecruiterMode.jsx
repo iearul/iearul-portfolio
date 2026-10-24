@@ -2,11 +2,12 @@ import { useEffect } from 'react'
 import { Link } from 'wouter'
 import { Page } from './Page'
 import { useContent } from '../store/content'
-import { APPS, PROFILE, SKILLS } from '../data/profile'
+import { PROFILE, SKILLS } from '../data/profile'
 import { renderMarkdown } from '../lib/markdown'
 import { Icon } from '../game/ui/Icon'
 import { ContactLinks } from '../game/ui/panels/ContactPanel'
 import { ProjectLinks } from '../game/ui/panels/ProjectsPanel'
+import { AppLinks } from '../game/ui/panels/AppsPanel'
 import { Chips } from '../game/ui/panels/common'
 
 function Entry({ e }) {
@@ -28,7 +29,7 @@ function Entry({ e }) {
 }
 
 export default function RecruiterMode({ notice }) {
-  const { career, projects, load } = useContent()
+  const { career, projects, apps, load } = useContent()
   useEffect(() => {
     load()
   }, [load])
@@ -94,17 +95,13 @@ export default function RecruiterMode({ notice }) {
       <section className="cv-section">
         <h2>Apps</h2>
         <div className="cv-projects">
-          {APPS.map((a) => (
+          {apps.map((a) => (
             <article key={a.slug} className="cv-project">
               <h3>{a.name}</h3>
-              <div className="org">Android · iOS · {a.status}</div>
-              <p>{a.summary}</p>
+              <div className="org">{[a.platforms?.join(' · '), a.status].filter(Boolean).join(' · ')}</div>
+              {a.summary && <p>{a.summary}</p>}
               <Chips items={a.tech} />
-              <div className="links">
-                <a className="primary-btn" href={a.page}>
-                  App page
-                </a>
-              </div>
+              <AppLinks app={a} />
             </article>
           ))}
         </div>

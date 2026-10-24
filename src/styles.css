@@ -933,6 +933,9 @@ kbd {
   height: 56px;
   border-radius: 14px;
 }
+.app-icon.cover-gen {
+  font-size: 1.6rem;
+}
 .app-card h3 {
   margin: 0;
   font-family: var(--font-display);

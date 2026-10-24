@@ -1,6 +1,6 @@
-// Static profile data. Career levels, projects and posts are loaded from the
-// admin API (admin.iearul.xyz); the copies below are the offline fallback and
-// mirror the admin's PortfolioSeeder.
+// Static profile data. Career levels, projects, apps and posts are loaded from
+// the admin API (admin.iearul.xyz); the copies below are the offline fallback and
+// mirror the admin's PortfolioSeeder and PortfolioAppSeeder.
 
 export const PROFILE = {
   name: 'Md Iearulislam',
@@ -43,29 +43,12 @@ export const SKILLS = [
   { id: 'agile', name: 'Agile / Scrum', group: 'Ways of working', tier: 'core' },
 ]
 
-// Apps in the App Studio, mirroring the static pages under public/apps/.
-// `stage` indexes RELEASE_STAGES: move it on as an app gets closer to the
-// stores, together with `status` and the app's page.
-export const RELEASE_STAGES = ['Build', 'Test', 'Beta', 'In stores']
-
-export const APPS = [
-  {
-    slug: 'qiblo', name: 'Qiblo', stage: 0,
-    status: 'Beta end of November 2026 · launch before Ramadan 2027',
-    summary:
-      'Everyday Islamic companion: halal food scanner, prayer times with start and end, Qibla compass, nearby mosques and a Ramadan mode. Free, no account, no tracking.',
-    tech: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI', 'Laravel API'],
-    icon: '/apps/qiblo/img/icon.png', page: '/apps/qiblo/',
-    cta: { label: 'Join the beta', url: 'https://qiblo.iearul.xyz/#beta' },
-  },
-  {
-    slug: 'rota-mint', name: 'RotaMint', stage: 1,
-    status: 'Coming soon',
-    summary:
-      'Shift calendar for people who work changing shifts: log early, late and night shifts and see paid hours and estimated gross pay for the month. Offline, no account, no ads.',
-    tech: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI', 'Play Billing', 'StoreKit'],
-    icon: '/apps/rota-mint/img/icon.png', page: '/apps/rota-mint/',
-  },
+// Release stages of an app, in order; an app's `stage` is one of the ids.
+export const RELEASE_STAGES = [
+  { id: 'build', label: 'Build' },
+  { id: 'test', label: 'Test' },
+  { id: 'beta', label: 'Beta' },
+  { id: 'live', label: 'In stores' },
 ]
 
 export const FALLBACK_CAREER = [
@@ -163,6 +146,31 @@ export const FALLBACK_PROJECTS = [
     id: 7, slug: 'expense-tracker', title: 'Expense Tracker', category: 'web', year: 2022, is_featured: false,
     summary: 'A simple expense tracker.', tech: ['React'],
     project_url: null, repo_url: 'https://github.com/iearul/Expense-Tracker', cover_url: null,
+  },
+]
+
+export const FALLBACK_APPS = [
+  {
+    id: 1, slug: 'qiblo', name: 'Qiblo', stage: 'build',
+    status: 'Beta end of November 2026 · launch before Ramadan 2027',
+    summary:
+      'Everyday Islamic companion: halal food scanner, prayer times with start and end, Qibla compass, nearby mosques and a Ramadan mode. Free, no account, no tracking.',
+    platforms: ['Android', 'iOS'],
+    tech: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI', 'Laravel API'],
+    icon_url: '/apps/qiblo/img/icon.png', page_url: '/apps/qiblo/',
+    cta_label: 'Join the beta', cta_url: 'https://qiblo.iearul.xyz/#beta',
+    play_store_url: null, app_store_url: null,
+  },
+  {
+    id: 2, slug: 'rota-mint', name: 'RotaMint', stage: 'test',
+    status: 'Coming soon',
+    summary:
+      'Shift calendar for people who work changing shifts: log early, late and night shifts and see paid hours and estimated gross pay for the month. Offline, no account, no ads.',
+    platforms: ['Android', 'iOS'],
+    tech: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI', 'Play Billing', 'StoreKit'],
+    icon_url: '/apps/rota-mint/img/icon.png', page_url: '/apps/rota-mint/',
+    cta_label: null, cta_url: null,
+    play_store_url: null, app_store_url: null,
   },
 ]
 

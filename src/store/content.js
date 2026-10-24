@@ -1,12 +1,13 @@
 import { create } from 'zustand'
 import { api } from '../lib/api'
-import { FALLBACK_CAREER, FALLBACK_PROJECTS, FALLBACK_POSTS } from '../data/profile'
+import { FALLBACK_CAREER, FALLBACK_PROJECTS, FALLBACK_APPS, FALLBACK_POSTS } from '../data/profile'
 
 // Portfolio content from the admin API, with built-in fallbacks so the island
 // is always playable even when the API is unreachable.
 export const useContent = create((set, get) => ({
   career: FALLBACK_CAREER,
   projects: FALLBACK_PROJECTS,
+  apps: FALLBACK_APPS,
   posts: FALLBACK_POSTS,
   status: 'idle', // idle | loading | ready
   online: false,
@@ -14,13 +15,14 @@ export const useContent = create((set, get) => ({
   load: async () => {
     if (get().status !== 'idle') return
     set({ status: 'loading' })
-    const [career, projects, posts] = await Promise.allSettled([api.career(), api.projects(), api.posts()])
+    const [career, projects, apps, posts] = await Promise.allSettled([api.career(), api.projects(), api.apps(), api.posts()])
     const ok = (r) => r.status === 'fulfilled' && Array.isArray(r.value)
     set({
       career: ok(career) && career.value.length ? career.value : FALLBACK_CAREER,
       projects: ok(projects) && projects.value.length ? projects.value : FALLBACK_PROJECTS,
+      apps: ok(apps) && apps.value.length ? apps.value : FALLBACK_APPS,
       posts: ok(posts) ? posts.value : FALLBACK_POSTS,
-      online: ok(career) || ok(projects) || ok(posts),
+      online: ok(career) || ok(projects) || ok(apps) || ok(posts),
       status: 'ready',
     })
   },

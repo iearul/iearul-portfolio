@@ -17,6 +17,7 @@ people in a hurry, and the site falls back to it when WebGL is not available.
   | --- | --- |
   | `GET /api/portfolio/career` | career levels per zone |
   | `GET /api/portfolio/projects[/{slug}]` | project arcade, CV projects |
+  | `GET /api/portfolio/apps` | App Studio, CV apps |
   | `GET /api/portfolio/posts[/{slug}]` | journal |
   | `POST /api/portfolio/messages` | mailbox contact form |
 
@@ -35,8 +36,8 @@ npm run dev
 ## Layout
 
 - `src/data/landmarks.js` — island layout: zones, positions, road order, orb spots
-- `src/data/profile.js` — static profile data: skills, the apps in the App Studio (`APPS`, `RELEASE_STAGES`;
-  update `stage` and `status` there as an app moves towards the stores) and the API fallbacks
+- `src/data/profile.js` — static profile data: skills, `RELEASE_STAGES` and the API fallbacks. Edit the apps in the
+  admin (**Portfolio Apps**: stage, status, store links); `FALLBACK_APPS` mirrors the admin's `PortfolioAppSeeder`
 - `src/game/world/` — terrain (one height function drives mesh, props and walking), water, sky, trees
 - `src/game/landmarks/` — the buildings
 - `src/game/Player.jsx` — movement (click/tap to walk, WASD), collisions, landmark proximity

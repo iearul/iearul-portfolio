@@ -27,6 +27,7 @@ export const api = {
   career: () => request('/career').then((r) => r.data),
   projects: () => request('/projects').then((r) => r.data),
   project: (slug) => request(`/projects/${encodeURIComponent(slug)}`).then((r) => r.data),
+  apps: () => request('/apps').then((r) => r.data),
   posts: () => request('/posts').then((r) => r.data),
   post: (slug) => request(`/posts/${encodeURIComponent(slug)}`).then((r) => r.data),
   sendMessage: (payload) => request('/messages', { method: 'POST', body: payload, timeout: 12000 }),
