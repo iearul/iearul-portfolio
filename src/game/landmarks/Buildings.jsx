@@ -442,6 +442,34 @@ function drawRota(ctx, t, w, h) {
   })
 }
 
+// Duffly: a packing list ticking itself off while the progress bar fills up.
+function drawDuffly(ctx, t, w, h) {
+  ctx.fillStyle = '#f6f8fb'
+  ctx.fillRect(0, 0, w, h)
+  ctx.fillStyle = '#0b6f77'
+  ctx.fillRect(0, 0, w, 22)
+  const rows = 6
+  const done = Math.min(Math.floor(t * 0.9) % (rows + 3), rows)
+  ctx.fillStyle = '#d5dde5'
+  ctx.fillRect(8, 30, w - 16, 5)
+  ctx.fillStyle = '#0b6f77'
+  ctx.fillRect(8, 30, ((w - 16) * done) / rows, 5)
+  for (let i = 0; i < rows; i++) {
+    const y = 44 + i * 14
+    const ticked = i < done
+    ctx.fillStyle = ticked ? '#0b6f77' : '#9fb0bb'
+    ctx.fillRect(8, y, 8, 8)
+    if (!ticked) {
+      ctx.fillStyle = '#f6f8fb'
+      ctx.fillRect(10, y + 2, 4, 4)
+    }
+    ctx.fillStyle = ticked ? '#c3ced8' : '#4a5b6b'
+    ctx.fillRect(21, y + 2, (w - 30) * (0.55 + ((i * 29) % 40) / 100), 4)
+  }
+  ctx.fillStyle = '#0b6f77'
+  ctx.fillRect(8, h - 18, w - 16, 10)
+}
+
 function Phone({ screen, body, notch, ...props }) {
   return (
     <group {...props}>
@@ -466,6 +494,7 @@ function Phone({ screen, body, notch, ...props }) {
 export function AppStudio() {
   const qiblo = useCanvasTexture(72, 144, drawQiblo, 0.08)
   const rota = useCanvasTexture(72, 144, drawRota, 0.2)
+  const duffly = useCanvasTexture(72, 144, drawDuffly, 0.2)
   const download = useRef()
   const spinner = useRef()
   useFrame(({ clock }, dt) => {
@@ -478,8 +507,9 @@ export function AppStudio() {
       {/* The studio faces the centre (west); the screens turn south-west so
           the camera, which always looks from +z, sees them too. */}
       <group rotation={[0, 1.1, 0]}>
-        <Phone screen={qiblo} body="#1d2a33" position={[-0.85, 0.37, 0.1]} rotation={[-0.1, 0.22, 0]} />
-        <Phone screen={rota} body="#d9dde3" notch position={[0.85, 0.37, 0.1]} rotation={[-0.1, -0.22, 0]} />
+        <Phone screen={qiblo} body="#1d2a33" position={[-1.5, 0.37, 0.1]} rotation={[-0.1, 0.3, 0]} />
+        <Phone screen={duffly} body="#0b6f77" notch position={[0, 0.37, -0.3]} rotation={[-0.1, 0, 0]} />
+        <Phone screen={rota} body="#d9dde3" notch position={[1.5, 0.37, 0.1]} rotation={[-0.1, -0.3, 0]} />
         <group ref={download} position={[0, 4.3, 0.2]}>
           <Box size={[0.22, 0.45, 0.22]} color="#ff8c42" emissive="#ff8c42" emissiveIntensity={0.4} position={[0, 0.22, 0]} />
           <Cone r={0.36} h={0.4} seg={4} color="#ff8c42" position={[0, -0.2, 0]} rotation={[Math.PI, Math.PI / 4, 0]} />

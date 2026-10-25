@@ -42,9 +42,11 @@
 /* App themes (colours from each app's design tokens) */
 .theme-rotamint { --accent: #087b6d; --accent-soft: #d3f2ea; --on-accent-soft: #03382f; }
 .theme-qiblo { --accent: #1d7a57; --accent-soft: #e1f0e7; --on-accent-soft: #0e3d2b; --gold: #c48f2c; }
+.theme-duffly { --accent: #0b6f77; --accent-soft: #d2efee; --on-accent-soft: #053a3f; }
 @media (prefers-color-scheme: dark) {
   .theme-rotamint { --accent: #23b99a; --on-accent: #0d1726; --accent-soft: #0f4b40; --on-accent-soft: #bdf5e3; }
   .theme-qiblo { --accent: #4cc38a; --on-accent: #0b1611; --accent-soft: #173528; --on-accent-soft: #c9f0dc; --gold: #e2b65c; }
+  .theme-duffly { --accent: #70d7cf; --on-accent: #062a2d; --accent-soft: #0f4a4e; --on-accent-soft: #bff3ee; }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -115,7 +117,7 @@ li { margin: 4px 0; }
 details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 0 18px; margin: 8px 0; }
 summary { cursor: pointer; font-weight: 600; padding: 14px 0; list-style-position: outside; }
 details[open] summary { padding-bottom: 6px; }
-details > p, details > ul { margin: 0 0 14px; color: var(--text-2); }
+details > p, details > ul, details > ol { margin: 0 0 14px; color: var(--text-2); }
 
 /* App hub */
 .app-card { display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow); }

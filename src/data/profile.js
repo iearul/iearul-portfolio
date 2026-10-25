@@ -172,6 +172,17 @@ export const FALLBACK_APPS = [
     cta_label: null, cta_url: null,
     play_store_url: null, app_store_url: null,
   },
+  {
+    id: 3, slug: 'duffly', name: 'Duffly', stage: 'test',
+    status: 'Coming soon',
+    summary:
+      'Packing list for your trips: starter templates, packing, to-buy and ready-to-leave checklists, item weights and bag limits. Offline, no account, no ads, no tracking.',
+    platforms: ['Android', 'iOS'],
+    tech: ['Kotlin', 'Jetpack Compose', 'Room', 'Swift', 'SwiftUI', 'Core Data', 'Play Billing', 'StoreKit'],
+    icon_url: '/apps/duffly/img/icon.png', page_url: '/apps/duffly/',
+    cta_label: null, cta_url: null,
+    play_store_url: null, app_store_url: null,
+  },
 ]
 
 export const FALLBACK_POSTS = []

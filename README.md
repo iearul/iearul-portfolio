@@ -2,7 +2,7 @@
 
 Portfolio of Md Iearulislam as a small 3D game. Visitors walk a low-poly island where every building is a
 level of the career (Dhaka campus → Zettabyte → Wuppertal → Bauer → Weezly), collect skill orbs, visit the
-app studio (Qiblo, RotaMint), play the project arcade, read the journal and send a message from the mailbox. `/cv` is a plain, printable CV for
+app studio (Qiblo, RotaMint, Duffly), play the project arcade, read the journal and send a message from the mailbox. `/cv` is a plain, printable CV for
 people in a hurry, and the site falls back to it when WebGL is not available.
 
 ## Stack
@@ -44,11 +44,11 @@ npm run dev
 - `src/game/ui/` — HUD, quest log, minimap, panels
 - `src/pages/` — `/cv` and `/journal`
 - `public/apps/`, `public/support/`, `public/contact/`, `public/impressum/`, `public/privacy/` — static HTML pages
-  for the mobile apps (Qiblo, RotaMint), the legal notice and the site privacy policy, styled by
+  for the mobile apps (Qiblo, RotaMint, Duffly), the legal notice and the site privacy policy, styled by
   `public/site.css`. No build step, no cookies, no third-party requests; Apache serves them directly because the
-  folders exist. `/contact` posts to `POST /api/portfolio/messages` like the mailbox. RotaMint has English pages
-  at `/apps/rota-mint/` and German ones under `/apps/rota-mint/de/`; the old `/apps/rotamint/…` paths redirect
-  there.
+  folders exist. `/contact` posts to `POST /api/portfolio/messages` like the mailbox. RotaMint and Duffly have English
+  pages at `/apps/rota-mint/` and `/apps/duffly/` and German ones under `…/de/`; RotaMint's old `/apps/rotamint/…`
+  paths redirect to the new ones. The Duffly apps link to its `support/` and `privacy/` pages and to `/impressum/`.
 - Fonts (Fredoka, Inter) are self-hosted via `@fontsource-variable/*` and bundled into `assets/`; keep the site
   free of Google Fonts and other third-party requests, or update `public/privacy/` to match.
 

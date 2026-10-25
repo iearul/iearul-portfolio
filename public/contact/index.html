@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact · Md Iearulislam</title>
-  <meta name="description" content="Contact Md Iearulislam: questions about Qiblo or RotaMint, project ideas or job offers.">
+  <meta name="description" content="Contact Md Iearulislam: questions about Qiblo, RotaMint or Duffly, project ideas or job offers.">
   <link rel="canonical" href="https://iearul.xyz/contact/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/site.css">
@@ -37,6 +37,7 @@
             <option value="General">General</option>
             <option value="Qiblo">Qiblo</option>
             <option value="RotaMint">RotaMint</option>
+            <option value="Duffly">Duffly</option>
             <option value="Work">Job or project</option>
           </select>
         </label>
@@ -81,7 +82,7 @@
     <aside class="card">
       <ul class="contact-list">
         <li><span>E-mail</span><a href="mailto:hello@iearul.xyz">hello@iearul.xyz</a></li>
-        <li><span>App help</span><a href="/support/">Support page</a> with answers for Qiblo and RotaMint</li>
+        <li><span>App help</span><a href="/support/">Support page</a> with answers for Qiblo, RotaMint and Duffly</li>
         <li><span>Elsewhere</span><a href="https://www.linkedin.com/in/md-iearulislam/">LinkedIn</a> ·
           <a href="https://github.com/iearul">GitHub</a></li>
         <li><span>Publisher</span><a href="/impressum/">Impressum</a></li>
@@ -107,7 +108,7 @@
     var field = function (name) { return form.elements.namedItem(name) }
     var status = form.querySelector('.form-status')
     var button = form.querySelector('button[type=submit]')
-    var topics = { qiblo: 'Qiblo', rotamint: 'RotaMint', work: 'Work' }
+    var topics = { qiblo: 'Qiblo', rotamint: 'RotaMint', duffly: 'Duffly', work: 'Work' }
     var app = new URLSearchParams(location.search).get('app')
     if (app && topics[app]) field('topic').value = topics[app]
 
