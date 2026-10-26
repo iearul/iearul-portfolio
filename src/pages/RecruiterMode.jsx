@@ -44,7 +44,7 @@ export default function RecruiterMode({ notice }) {
       {notice && <p className="notice">{notice}</p>}
       <section className="cv-hero">
         <div>
-          <div className="kicker">Recruiter mode</div>
+          <div className="kicker">Open to contract projects</div>
           <h1>{PROFILE.name}</h1>
           <p className="cv-role">
             {PROFILE.role} · <Icon name="pin" size={15} /> {PROFILE.location}

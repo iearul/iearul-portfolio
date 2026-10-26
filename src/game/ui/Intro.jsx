@@ -23,7 +23,7 @@ export function Intro({ ready }) {
             <Icon name="play" /> {ready ? (returning ? 'Continue exploring' : 'Start exploring') : 'Building the island…'}
           </button>
           <Link href="/cv" className="ghost-btn big">
-            Recruiter mode (plain CV)
+            Skip the game: plain CV
           </Link>
         </div>
         <div className="intro-keys">Click or tap to walk · WASD / arrows · E to enter · Q quest log</div>

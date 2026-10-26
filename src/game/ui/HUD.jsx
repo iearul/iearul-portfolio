@@ -40,7 +40,7 @@ export function HUD() {
         <button type="button" className="hud-btn" onClick={() => s.openPanel({ type: 'skills', id: 'tree' })} title="Skill tree">
           <Icon name="spark" /> <span>{skills}/{SKILLS.length}</span>
         </button>
-        <Link href="/cv" className="hud-btn" title="Recruiter mode: the plain CV">
+        <Link href="/cv" className="hud-btn" title="The plain CV">
           <Icon name="file" /> <span>CV</span>
         </Link>
         <button type="button" className="hud-btn icon-only" onClick={s.toggleMute} aria-label={s.muted ? 'Unmute sound' : 'Mute sound'}>
