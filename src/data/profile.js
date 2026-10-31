@@ -7,7 +7,7 @@ export const PROFILE = {
   short: 'Iearul',
   role: 'Full-Stack Developer',
   location: 'Leipzig, Germany',
-  email: 'iearul.abid@gmail.com',
+  email: 'hello@iearul.xyz',
   github: 'https://github.com/iearul',
   linkedin: 'https://www.linkedin.com/in/md-iearulislam/',
   summary:
