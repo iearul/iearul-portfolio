@@ -183,6 +183,17 @@ export const FALLBACK_APPS = [
     cta_label: null, cta_url: null,
     play_store_url: null, app_store_url: null,
   },
+  {
+    id: 4, slug: 'probashi-ranna', name: 'Probashi Ranna', stage: 'build',
+    status: 'Coming soon',
+    summary:
+      'Bengali recipes for Bengalis abroad: Bangladeshi home cooking in Bengali or English, with each ingredient\'s name in the shops of your country, a shopping list and cook mode with timers. No account, no ads.',
+    platforms: ['Android', 'iOS'],
+    tech: ['Kotlin', 'Jetpack Compose', 'Room', 'Swift', 'SwiftUI', 'SQLite', 'Play Billing', 'StoreKit', 'Laravel API'],
+    icon_url: '/apps/probashi-ranna/img/icon.png', page_url: '/apps/probashi-ranna/',
+    cta_label: null, cta_url: null,
+    play_store_url: null, app_store_url: null,
+  },
 ]
 
 export const FALLBACK_POSTS = []

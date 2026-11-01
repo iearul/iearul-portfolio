@@ -1,0 +1,45 @@
+/* Probashi Ranna pages. Loaded after /site.css. Theme colours from the app's design tokens
+   (chili on ivory, contrast-checked); Bengali text uses the device's own fonts, no web fonts. */
+.theme-probashi { --accent: #b8321f; --on-accent: #ffffff; --accent-soft: #f7ddd5; --on-accent-soft: #5a160b; --gold: #8a6a12; }
+@media (prefers-color-scheme: dark) {
+  .theme-probashi { --accent: #f08a73; --on-accent: #2a1206; --accent-soft: #5a1d10; --on-accent-soft: #ffdad0; --gold: #e9b44c; }
+}
+
+/* Bengali: system fonts with Bengali coverage; no negative tracking and room for vowel signs above and below. */
+:lang(bn) {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Kohinoor Bangla", "Noto Sans Bengali",
+    "Nirmala UI", "Bangla Sangam MN", "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0;
+}
+h1:lang(bn), h2:lang(bn), h3:lang(bn) { line-height: 1.4; letter-spacing: 0; }
+.lead:lang(bn) { line-height: 1.7; }
+
+.hero .lead + .lead { margin-top: -4px; }
+.feature .bn-title { margin: -2px 0 8px; color: var(--accent); font-weight: 600; font-size: 15px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 12px 0 0; }
+.chips li { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px;
+  font-size: 15px; }
+
+/* Recipe share page */
+.share { max-width: 640px; margin: 0 auto; }
+.share .hero-icon { margin-top: 32px; }
+.share h1 { margin: 18px 0 6px; }
+.share .title-en { font-size: 19px; color: var(--text-2); margin: 0 0 14px; }
+.share-photo { display: block; width: 100%; height: auto; max-height: 420px; object-fit: cover; margin: 28px 0 0;
+  border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-2); }
+.share .excerpt { font-size: 18px; line-height: 1.75; color: var(--text); margin: 0 0 8px; }
+.share .actions { flex-direction: column; align-items: stretch; margin-top: 26px; }
+.btn-big { min-height: 58px; font-size: 18px; padding: 14px 24px; border-radius: 14px; }
+.share .stores { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.share .stores .btn { flex: 1 1 200px; }
+.share .stores .pill { flex: 1 1 200px; justify-content: center; min-height: 46px; border-radius: 12px; }
+.share .full-note { margin-top: 18px; }
+.share-status { color: var(--text-2); margin: 40px 0 0; }
+.skeleton { border-radius: 10px; background: var(--surface-2); }
+.skeleton.photo { height: 220px; border-radius: var(--radius); margin-top: 16px; }
+.skeleton.line { height: 18px; margin-top: 14px; }
+.skeleton.line.short { width: 60%; }
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton { animation: pr-pulse 1.4s ease-in-out infinite; }
+  @keyframes pr-pulse { 50% { opacity: 0.55; } }
+}

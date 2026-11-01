@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>প্রবাসী রান্না · Probashi Ranna</title>
+  <meta name="description" content="বাংলায় ধাপে ধাপে রেসিপি, আর আপনার দেশের দোকানে উপকরণগুলো কী নামে পাবেন। Bengali recipes with the ingredient names used in the shops where you live.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/apps/probashi-ranna/img/icon.png">
+  <meta name="theme-color" content="#b8321f">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Probashi Ranna">
+  <meta property="og:title" content="প্রবাসী রান্না · Probashi Ranna">
+  <meta property="og:description" content="বাংলায় ধাপে ধাপে রেসিপি, আর আপনার দেশের দোকানে উপকরণগুলো কী নামে পাবেন। Bengali recipes with the ingredient names used in the shops where you live.">
+  <meta property="og:image" content="https://iearul.xyz/apps/probashi-ranna/img/icon.png">
+  <meta property="og:image:width" content="256">
+  <meta property="og:image:height" content="256">
+  <meta property="og:image:alt" content="Probashi Ranna app icon: a cooking pot with steam">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="প্রবাসী রান্না · Probashi Ranna">
+  <meta name="twitter:description" content="বাংলায় ধাপে ধাপে রেসিপি, আর আপনার দেশের দোকানে উপকরণগুলো কী নামে পাবেন। Bengali recipes with the ingredient names used in the shops where you live.">
+  <meta name="twitter:image" content="https://iearul.xyz/apps/probashi-ranna/img/icon.png">
+  <link rel="stylesheet" href="/site.css">
+  <link rel="stylesheet" href="/apps/probashi-ranna/app.css">
+</head>
+<body class="theme-probashi">
+<a class="skip" href="#main" lang="en">Skip to content</a>
+<header class="site-bar" lang="en">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/favicon.svg" alt="" width="28" height="28">Md Iearulislam</a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="/apps/">Apps</a>
+      <a href="/support/">Support</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </div>
+</header>
+<div class="app-bar">
+  <div class="wrap">
+    <a class="app-name" href="/apps/probashi-ranna/"><img src="/apps/probashi-ranna/img/icon.png" alt="" width="30" height="30"><span lang="bn">প্রবাসী রান্না</span></a>
+    <nav aria-label="Probashi Ranna" lang="en">
+      <a href="/apps/probashi-ranna/">Overview</a>
+      <a href="/apps/probashi-ranna/support/">Help</a>
+      <a href="/apps/probashi-ranna/privacy/">Privacy</a>
+    </nav>
+  </div>
+</div>
+
+<main id="main" class="wrap share">
+  <!-- Shown while a recipe preview loads -->
+  <div id="loading" hidden>
+    <p class="share-status" role="status">রেসিপি আনা হচ্ছে… <span lang="en">· Loading the recipe…</span></p>
+    <div class="skeleton photo"></div>
+    <div class="skeleton line"></div>
+    <div class="skeleton line short"></div>
+  </div>
+
+  <!-- Recipe preview: title, photo and the start of the introduction only. The script fills it with textContent and
+       setAttribute; ingredients and steps stay in the app. -->
+  <article id="recipe" hidden>
+    <img id="recipe-photo" class="share-photo" alt="" hidden>
+    <p class="kicker"><span lang="bn">প্রবাসী রান্না</span> · <span lang="en">Probashi Ranna</span></p>
+    <h1 id="recipe-title"></h1>
+    <p id="recipe-title-en" class="title-en" lang="en" hidden></p>
+    <p id="recipe-intro" class="excerpt" hidden></p>
+    <p class="muted full-note">পুরো রেসিপি — উপকরণ, ধাপ আর আপনার দেশের দোকানে উপকরণের নাম — অ্যাপে পাবেন।<br>
+      <span lang="en">The full recipe, with ingredients, steps and the names used in your local shops, is in the
+      app.</span></p>
+  </article>
+
+  <!-- Generic promo: the default, and the fallback for a missing or invalid link and for any error -->
+  <section id="promo">
+    <img class="hero-icon" src="/apps/probashi-ranna/img/icon.png" alt="" width="88" height="88">
+    <h1>প্রবাসে চেনা স্বাদের রান্না</h1>
+    <p class="lead">বাংলায় ধাপে ধাপে রেসিপি, আর আপনার দেশের দোকানে উপকরণগুলো কী নামে পাবেন — সব এক জায়গায়।</p>
+    <p class="lead" lang="en">Bengali home cooking, step by step, with the name each ingredient goes by in the shops
+      where you live.</p>
+    <p id="promo-missing" class="note" hidden>এই রেসিপিটি এখানে এখন দেখানো যাচ্ছে না — অ্যাপে খুলে দেখুন।
+      <span lang="en">This recipe can't be shown here right now. Open it in the app.</span></p>
+  </section>
+
+  <div class="actions">
+    <a id="open-app" class="btn btn-primary btn-big" href="probashiranna://recipe">অ্যাপে খুলুন <span lang="en">· Open in the app</span></a>
+    <div class="stores">
+      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=xyz.iearul.probashiranna" lang="en">Google Play</a>
+      <span class="pill">App Store: শিগগিরই আসছে <span lang="en">· coming soon</span></span>
+    </div>
+  </div>
+  <p class="muted small">অ্যাপ ইনস্টল করা থাকলে “অ্যাপে খুলুন” কাজ করবে।
+    <span lang="en">“Open in the app” works once the app is installed.</span></p>
+  <p class="muted small" lang="en"><a href="/apps/probashi-ranna/">About Probashi Ranna</a></p>
+</main>
+
+<footer class="site-foot" lang="en">
+  <div class="wrap">
+    <span class="copy">Probashi Ranna by Iearul's Lab</span>
+    <a href="/apps/probashi-ranna/">Probashi Ranna</a>
+    <a href="/apps/probashi-ranna/support/">Help &amp; contact</a>
+    <a href="/apps/probashi-ranna/privacy/">Privacy</a>
+    <a href="/apps/probashi-ranna/terms/">Terms</a>
+    <a href="/impressum/">Legal notice (Impressum)</a>
+    <a href="/privacy/#en">Website privacy</a>
+  </div>
+</footer>
+
+<script>
+// Recipe preview for links shared from the app: /apps/probashi-ranna/recipe/?id=<uuid>.
+// Reads GET /recipes/{id} (contracts/openapi/probashi-ranna-v1.yaml). API text is only ever set with textContent or
+// setAttribute, never parsed as HTML. Anything unexpected falls back to the generic promo.
+(function () {
+  'use strict';
+  var API = 'https://admin.iearul.xyz/api/probashi-ranna/v1/recipes/';
+  var MEDIA_HOST = 'admin.iearul.xyz';
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  var INTRO_MAX = 200;
+  var TIMEOUT_MS = 12000;
+
+  function el(id) { return document.getElementById(id); }
+  var promo = el('promo'), loading = el('loading'), recipe = el('recipe');
+
+  var id = '';
+  try { id = new URLSearchParams(window.location.search).get('id') || ''; } catch (e) { id = ''; }
+  id = id.trim();
+  if (!UUID.test(id)) return; // no or invalid id: the promo stays as it is
+  id = id.toLowerCase();
+  el('open-app').setAttribute('href', 'probashiranna://recipe/' + id);
+
+  var settled = false;
+  function showPromo() {
+    if (settled) return;
+    settled = true;
+    loading.hidden = true;
+    recipe.hidden = true;
+    promo.hidden = false;
+    el('promo-missing').hidden = false;
+  }
+
+  function clean(value) {
+    return typeof value === 'string' ? value.replace(/\s+/g, ' ').trim() : '';
+  }
+
+  // First ~200 characters, cut at a word boundary so no Bengali letter cluster is split.
+  function excerpt(s, max) {
+    if (s.length <= max) return s;
+    var cut = s.slice(0, max);
+    var space = cut.lastIndexOf(' ');
+    if (space > max / 3) {
+      cut = cut.slice(0, space);
+    } else if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+      var out = '';
+      var parts = Array.from(new Intl.Segmenter('bn', { granularity: 'grapheme' }).segment(s));
+      for (var i = 0; i < parts.length && (out + parts[i].segment).length <= max; i++) out += parts[i].segment;
+      cut = out;
+    }
+    return cut.replace(/[\s,;:–—-]+$/, '') + '…';
+  }
+
+  function heroOf(media) {
+    if (!Array.isArray(media)) return null;
+    for (var i = 0; i < media.length; i++) {
+      var m = media[i];
+      if (!m || m.role !== 'hero' || typeof m.url !== 'string') continue;
+      var url;
+      try { url = new URL(m.url); } catch (e) { continue; }
+      if (url.protocol !== 'https:' || url.hostname !== MEDIA_HOST) continue;
+      var altBn = clean(m.alt_bn), altEn = clean(m.alt_en);
+      return {
+        src: url.href,
+        alt: altBn || altEn,
+        altLang: altBn ? 'bn' : 'en',
+        width: m.width,
+        height: m.height
+      };
+    }
+    return null;
+  }
+
+  function isSize(n) { return typeof n === 'number' && n % 1 === 0 && n > 0 && n < 20000; }
+
+  function render(body) {
+    if (settled) return;
+    var r = body && typeof body === 'object' ? body.recipe : null;
+    var title = r && typeof r === 'object' ? clean(r.title_bn) : '';
+    if (!title) throw new Error('Unexpected response');
+    if (typeof r.id === 'string' && r.id.toLowerCase() !== id) throw new Error('Unexpected recipe');
+
+    el('recipe-title').textContent = title;
+    var titleEn = clean(r.title_en);
+    if (titleEn && titleEn !== title) {
+      el('recipe-title-en').textContent = titleEn;
+      el('recipe-title-en').hidden = false;
+    }
+    var intro = clean(r.intro_bn);
+    if (intro) {
+      el('recipe-intro').textContent = excerpt(intro, INTRO_MAX);
+      el('recipe-intro').hidden = false;
+    }
+    var hero = heroOf(r.media);
+    if (hero) {
+      var img = el('recipe-photo');
+      img.addEventListener('error', function () { img.hidden = true; });
+      if (isSize(hero.width) && isSize(hero.height)) {
+        img.setAttribute('width', String(hero.width));
+        img.setAttribute('height', String(hero.height));
+      }
+      img.setAttribute('alt', hero.alt || title);
+      if (hero.alt) img.setAttribute('lang', hero.altLang);
+      img.setAttribute('decoding', 'async');
+      img.setAttribute('src', hero.src);
+      img.hidden = false;
+    }
+    document.title = title + ' · প্রবাসী রান্না';
+    settled = true;
+    loading.hidden = true;
+    recipe.hidden = false;
+  }
+
+  if (typeof window.fetch !== 'function') { showPromo(); return; }
+  promo.hidden = true;
+  loading.hidden = false;
+  var controller = typeof AbortController === 'function' ? new AbortController() : null;
+  var timer = setTimeout(function () {
+    if (controller) controller.abort();
+    showPromo();
+  }, TIMEOUT_MS);
+
+  fetch(API + encodeURIComponent(id), {
+    method: 'GET',
+    mode: 'cors',
+    credentials: 'omit',
+    headers: { Accept: 'application/json' },
+    signal: controller ? controller.signal : undefined
+  })
+    .then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(render)
+    .catch(showPromo)
+    .then(function () { clearTimeout(timer); });
+})();
+</script>
+</body>
+</html>
