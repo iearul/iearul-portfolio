@@ -60,8 +60,8 @@ export function AppsPanel() {
     <>
       <PanelHeader
         kicker="App Studio · Android & iOS"
-        title="Apps I ship"
-        sub="Small, focused apps I design, build and publish myself: Kotlin and Jetpack Compose on Android, Swift and SwiftUI on iOS."
+        title="Apps I build"
+        sub="Small, focused apps, published by Sayma Khanam on sayma.xyz: Kotlin and Jetpack Compose on Android, Swift and SwiftUI on iOS."
       />
       <div className="app-list">
         {apps.map((a) => (

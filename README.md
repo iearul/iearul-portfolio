@@ -43,14 +43,14 @@ npm run dev
 - `src/game/Player.jsx` — movement (click/tap to walk, WASD), collisions, landmark proximity
 - `src/game/ui/` — HUD, quest log, minimap, panels
 - `src/pages/` — `/cv` and `/journal`
-- `public/apps/`, `public/support/`, `public/contact/`, `public/impressum/`, `public/privacy/` — static HTML pages
-  for the mobile apps (Qiblo, RotaMint, Duffly, Probashi Ranna), the legal notice and the site privacy policy, styled by
-  `public/site.css`. No build step, no cookies, no third-party requests; Apache serves them directly because the
-  folders exist. `/contact` posts to `POST /api/portfolio/messages` like the mailbox. RotaMint and Duffly have English
-  pages at `/apps/rota-mint/` and `/apps/duffly/` and German ones under `…/de/`; RotaMint's old `/apps/rotamint/…`
-  paths redirect to the new ones. The Duffly apps link to its `support/` and `privacy/` pages and to `/impressum/`.
-  Probashi Ranna has the same pages plus `terms/` and `credits/` at `/apps/probashi-ranna/` (German under `de/`),
-  and `/apps/probashi-ranna/recipe/?id=` is the recipe share link that opens the app or points to the stores.
+- `public/contact/`, `public/impressum/`, `public/privacy/` — static HTML pages for the contact form, the legal
+  notice and the site privacy policy, styled by `public/site.css`. No build step, no cookies, no third-party
+  requests; Apache serves them directly because the folders exist. `/contact` posts to `POST /api/portfolio/messages`
+  like the mailbox.
+- The app pages (Qiblo, RotaMint, Duffly, Probashi Ranna) and the app support page moved to **sayma.xyz** (repo
+  `sayma-xyz`). `public/.htaccess` redirects every old `/apps/…` and `/support/…` address there with the same path
+  and query string, because the app builds and store listings still link to iearul.xyz. The App Studio on the island
+  keeps listing the apps and links to their pages on sayma.xyz; `public/img/apps/` holds the fallback icons.
 - Fonts (Fredoka, Inter) are self-hosted via `@fontsource-variable/*` and bundled into `assets/`; keep the site
   free of Google Fonts and other third-party requests, or update `public/privacy/` to match.
 
@@ -59,7 +59,8 @@ npm run dev
 Every push to `main` runs `.github/workflows/deploy.yml`: build, then rsync `dist/` to
 `~/domains/iearul.xyz/public_html` on the Hostinger server. The upload never deletes anything outside
 `assets/`, because that docroot also hosts the `admin`, `lgc`, `megashop` and `iloveyou` apps.
-`public/.htaccess` routes client-side URLs to `index.html` and blocks `/admin/*` on the main domain. All
+`public/.htaccess` routes client-side URLs to `index.html`, redirects the moved app pages to sayma.xyz and blocks
+`/admin/*` on the main domain. All
 its rules apply only to the `iearul.xyz` host, so the subdomains are not affected.
 
 Repository secrets:

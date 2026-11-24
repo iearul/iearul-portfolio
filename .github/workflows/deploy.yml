@@ -67,5 +67,6 @@ jobs:
         run: |
           curl -fsS https://iearul.xyz/ | grep -q 'Career Island'
           curl -fsS -o /dev/null https://iearul.xyz/cv
-          curl -fsS https://iearul.xyz/apps/ | grep -q 'Apps for Android and iPhone'
+          # The app pages live on sayma.xyz now; the old addresses must redirect there.
+          test "$(curl -sS -o /dev/null -w '%{http_code} %{redirect_url}' https://iearul.xyz/apps/duffly/privacy/)" = '301 https://sayma.xyz/apps/duffly/privacy/'
           curl -fsS https://iearul.xyz/impressum/ | grep -q 'Angaben gemäß § 5 DDG'

@@ -58,7 +58,7 @@ export function HUD() {
 
       {/* Plain <a>: these are static pages outside the SPA. */}
       <nav className="hud-legal" aria-label="Site">
-        <a href="/apps/">Apps</a>
+        <a href="https://sayma.xyz/apps/">Apps</a>
         <a href="/impressum/">Impressum</a>
         <a href="/privacy/#en">Privacy</a>
       </nav>

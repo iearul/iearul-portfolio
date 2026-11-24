@@ -19,13 +19,13 @@ export function Page({ title, children, className = '' }) {
           <Link href="/cv">CV</Link>
           <Link href="/journal">Journal</Link>
           {/* Static pages outside the SPA, so plain links instead of <Link>. */}
-          <a href="/apps/">Apps</a>
+          <a href="https://sayma.xyz/apps/">Apps</a>
         </nav>
       </header>
       <main className="page-main">{children}</main>
       <footer className="page-foot">
         © {new Date().getFullYear()} Md Iearulislam · Built with React, Three.js and a Laravel API ·{' '}
-        <a href="/support/">Support</a> · <a href="/contact/">Contact</a> · <a href="/impressum/">Impressum</a> ·{' '}
+        <a href="https://sayma.xyz/support/">App support</a> · <a href="/contact/">Contact</a> · <a href="/impressum/">Impressum</a> ·{' '}
         <a href="/privacy/#en">Privacy</a>
       </footer>
     </div>
